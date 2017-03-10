@@ -1,0 +1,222 @@
+backup:{]<autoexec.cfg>[}// Executes main Aliases used by majority of classes
+//--------------------------------------------------
+exec mainalias.cfg
+
+//Loads up aliases for net binds
+//--------------------------------------------------
+exec Net/netaliases.cfg
+
+//Choice of Chris's GFX cfgs unmodded
+//--------------------------------------------------
+//exec GFX/highframes.cfg // Executes Chris's Dx 8 Highframes Cfg
+//exec GFX/maxquality.cfg
+//exec GFX/dx9frames.cfg
+exec GFX/maxframes.cfg
+
+//Executes personal tweaks and the like
+//--------------------------------------------------
+exec saki.cfg
+
+{]<demoman.cfg>[}//DEMOMAN - Loads Demoman class specific controls and settings
+//========================================================
+//========================================================
+
+//Reset Controls to non Class Specific Settings
+//---------------------------------------------
+exec clear.cfg
+
+exec crosshairswitcher/switcher; demoman
+exec demoman/demomanalias
+exec demoman/demomansettings
+exec demoman/demomanbinds
+
+
+// Notification in console and team
+say_team "-> Demoman Spawned"
+echo "*** DEMOMAN CFG LOADED***
+{]<demoplayback.cfg>[}cl_use_tournament_specgui 1
+
+exec crosshairswitcher/disable
+
+medium; white; dot; 70; viewmodel_fov_demo 70	//appears as viewmodel_fov 86 in STV-Demos{]<engineer.cfg>[}exec crosshairswitcher/disable; engineer
+
+{]<heavyweapons.cfg>[}exec crosshairswitcher/disable; heavy
+
+{]<insourcetv.cfg>[}cl_use_tournament_specgui 1
+
+exec crosshairswitcher/disable
+
+medium; white; dot; 68	//appears as viewmodel_fov 84 in STV{]<mainalias.cfg>[}// Main aliases config used for all classes.
+
+//Class switcher Scripts 
+alias saki_scout "join_class scout;say_team >>PLAYING SCOUT<<"
+alias saki_soldier "join_class soldier;say_team >>PLAYING SOLDIER<<"
+alias saki_pyro "join_class pyro;say_team >>PLAYING PYRO<<"
+alias saki_demoman "join_class demoman;say_team >>PLAYING DEMOMAN<<"
+alias saki_heavy "join_class heavyweapons;say_team >>PLAYING HEAVY<<"
+alias saki_engineer "join_class engineer;say_team >>PLAYING ENGINEER<<"
+alias saki_medic "join_class medic;say_team >>PLAYING MEDIC<<"
+alias saki_sniper "join_class sniper;say_team >>PLAYING SNIPER<<"
+alias saki_spy "join_class spy;say_team >>PLAYING SPY<<"
+
+// Class switcher toggle
+alias +saki_joinclass "bind 1 saki_scout; bind 2 saki_soldier; bind 3 saki_pyro; bind 4 saki_demoman; bind 5 saki_heavy; bind 6 saki_engineer; bind 7 saki_medic; bind 8 saki_sniper; bind 9 saki_spy"
+
+alias -saki_joinclass "bind 1 "slot1"; bind 2 "slot2"; bind 3 "slot3"; bind 4 "slot4"; bind 5 "slot5"; bind 6 "slot6"; bind 7 "slot7"; bind 8 "slot8"; bind 9 "slot9""
+
+// lol rainbows
+alias hana 	"cl_crosshair_green 0;cl_crosshair_red 255;cl_crosshair_blue 255"  
+alias dul	"cl_crosshair_green 255;cl_crosshair_red 0;cl_crosshair_blue 0"  
+alias set	"cl_crosshair_green 255;cl_crosshair_red 255;cl_crosshair_blue 0"  
+alias net	"cl_crosshair_green 255;cl_crosshair_red 0;cl_crosshair_blue 255"  
+
+//Null-Cancelling movement script
+alias +mfwd "-back;+forward;alias checkfwd +forward"
+alias +mback "-forward;+back;alias checkback +back"
+alias +mleft "-moveright;+moveleft;alias checkleft +moveleft"
+alias +mright "-moveleft;+moveright;alias checkright +moveright"
+alias -mfwd "-forward;checkback;alias checkfwd none"
+alias -mback "-back;checkfwd;alias checkback none"
+alias -mleft "-moveleft;checkright;alias checkleft none"
+alias -mright "-moveright;checkleft;alias checkright none"
+alias checkfwd none
+alias checkback none
+alias checkleft none
+alias checkright none
+alias none ""
+
+//Crouch Jump
+alias "+cj" "+jump;+duck"
+alias "-cj" "-jump;-duck"
+
+//Crouch Jump Fixer
+alias nocmd ""
+alias df_duck "+duck"
+alias df_stand "-duck"
+alias +duckfix "+duck; alias df_duck nocmd; alias df_stand nocmd"
+alias -duckfix "-duck; alias df_duck +duck; alias df_stand -duck"
+
+//Scoreboard With netgraph
+alias +saki_scores "+showscores;net_graph 4;mp_showrespawntimes"
+alias -saki_scores "-showscores;net_graph 0;timeleft"
+
+//Cleaner Voice commands
+alias "v_medic" "voicemenu 0 0"
+alias "v_thanks" "voicemenu 0 1"
+alias "v_gogogo" "voicemenu 0 2"
+alias "v_moveup" "voicemenu 0 3"
+alias "v_goleft" "voicemenu 0 4"
+alias "v_goright" "voicemenu 0 5"
+alias "v_yes" "voicemenu 0 6"
+alias "v_no" "voicemenu 0 7"
+//
+alias "v_incoming" "voicemenu 1 0"
+alias "v_cloakedspy" "voicemenu 1 1"
+alias "v_sentryahead" "voicemenu 1 2"
+alias "v_teleporterhere" "voicemenu 1 3"
+alias "v_dispenserhere" "voicemenu 1 4"
+alias "v_sentryhere" "voicemenu 1 5"
+alias "v_activateuber" "voicemenu 1 6"
+alias "v_uberready" "voicemenu 1 7"
+//
+alias "v_help" "voicemenu 2 0"
+alias "v_battlecry" "voicemenu 2 1"
+alias "v_cheers" "voicemenu 2 2"
+alias "v_jeers" "voicemenu 2 3"
+alias "v_positive" "voicemenu 2 4"
+alias "v_negative" "voicemenu 2 5"
+alias "v_niceshot" "voicemenu 2 6"
+alias "v_goodjob" "voicemenu 2 7"
+
+//Gfx Fixer command
+alias gfxfix "record fix; stop"
+
+//Cleaner Spray command
+alias saki_spray "impulse 201"
+
+//Min Mode HUD toggler
+alias saki_toggle_minmode "incrementvar cl_hud_minmode 0 1 1"
+
+//Viewmodel toggler
+alias saki_toggle_viewmodel "incrementvar r_draw_viewmodel 0 1 1"{]<medic.cfg>[}exec crosshairswitcher/switcher; medic
+
+{]<pyro.cfg>[}exec crosshairswitcher/switcher; pyro
+
+{]<saki.cfg>[}//----------------------------------
+// Saki's settings September 2013)
+//----------------------------------
+
+//Monitor: Samtron 75E @ 120 Hz 
+//Mouse: Zowie AM V3 with IME 3.0 Speedy Skatez 
+//Mousemat: PureTrak Talent 
+//Keyboard: Corsair K90 
+//Headset: Steelseries 5HV2 
+
+//Raw input on 
+//450 dpi 
+//3.5 ingame sens 
+//1000hz 
+//----------------------------------
+// -dxlevel 81 -h 480 -w 640 -console -full
+//----------------------------------
+
+
+sensitivity 3.5
+zoom_sensitivity_ratio 1
+prec_notify 1
+prec_sound 1
+m_rawinput 1
+volume 0.2
+//fps_max 152
+//fps_max 150
+fps_max 0
+//fps_max 101 // This is not CS lel
+fov_desired 90
+mat_monitorgamma 1.6
+cl_autorezoom 0
+cl_autoreload 1
+cl_spec_carrieditems 1
+cl_use_tournament_specgui 1
+tf_dingalingaling "1"
+tf_dingaling_pitchmaxdmg "60"
+tf_dingaling_pitchmindmg "100"
+tf_dingaling_volume 2
+tf_simple_disguise_menu 1
+hud_combattext_batching "1"
+hud_combattext_healing "1"
+bind kp_pgup "prec_record"
+bind kp_uparrow "prec_mark
+cl_ask_favorite_opt_out 1
+cl_ask_blacklist_opt_out 1
+exec pugmode
+//closecaption 1 // Good feature but way too many frames lost to use consistently especially in pubs
+closecaption 0
+
+//cl_cmdrate 66
+//cl_interp 0.03
+//cl_interp_ratio 2
+//cl_lagcompensation 1
+//cl_pred_optimize 2
+//cl_smooth 0
+//cl_smoothtime 0.1
+//cl_updaterate 66
+rate 30000
+
+cl_cmdrate 66
+cl_interp 0
+//cl_interp_ratio 1.5
+cl_interp_ratio 1
+cl_lagcompensation 1
+cl_pred_optimize 2
+cl_smooth 0
+cl_smoothtime 0.01
+cl_updaterate 66
+
+echo "saki loaded"{]<scout.cfg>[}exec crosshairswitcher/switcher; scout
+
+{]<sniper.cfg>[}exec crosshairswitcher/switcher; sniper
+
+{]<soldier.cfg>[}exec crosshairswitcher/switcher; soldier
+
+{]<spy.cfg>[}exec crosshairswitcher/disable; spy
+
